@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html ng-app="plunker">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>AngularJS Plunker</title>
+    <script>document.write('<base href="' + document.location + '" />');</script>
+    <link rel="stylesheet" href="style.css" />
+    <script data-require="angular.js@1.4.x" src="https://code.angularjs.org/1.4.12/angular.js" data-semver="1.4.9"></script>
+    <script src="app.js"></script>
+ 
+  <!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-animate.min.js"></script>
+  <script src="app.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>-->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
+
+
+  </head>
+
+  <body ng-app = "plunker" ng-controller="MainCtrl" ng-click = openValidation()>
+     <title>Home</title>
+     
+  <img id="logo" src="https://i.imgur.com/p8vRxoz.png" alt="logo" />
+     <div class='Login_Page' style="width: 800px; margin: 0 auto;" >
+    <div id = "me" class="boxed" ng-show = "loginVisible" >
+      
+      <div class="dropdown">
+  
+      <button id = "myButton1" ng-click = pressedIT() class="dropbtn">Choose who to login as...</button>
+
+      <div id="myDropdown" ng-show = "makeitVisible" class="dropdown-content">
+        <br>
+      <a id='manager' ng-click = clickedManager()>Manager</a>
+      <a id='owner'  ng-click = clickedOwner()>Owner</a>
+     </div>
+    </div>
+    
+
+    <form align = "center" id = "myForm">
+      
+      <h3 id="username">Username:</h3>
+      <input type="text" id = "customx" maxlength = "22" placeholder="Enter Username"   title = "User Username" ng-click = duckerino() ng-model="username">
+      <h3 id="password">Password:</h3>
+      <input ng-hide="showpassword" id = "givepass"  maxlength = "30" placeholder="Enter Password" title = "User Password" ng-click = duckerino()  ng-model="password" type="password" ><br><br>
+      <button  id = "ok" type = "submit" ng-model = "checked" aria-label = "Toggle ngShow"   ng-click = loginValidation()>Login</button>
+       <button  type = "submit" id = "cancel"  ng-click =  closeValidation()>Cancel</button>
+      <br>
+      
+     <p> {{feedback}} </p>
+     <p> {{lol}} </p>
+   
+     
+     
+    
+    </form>
+    </div>
+    
+   
+    
+     <div   class = "main"  id ="build" ng-show = "directoryVisible" >
+  
+      
+      <button id = "back" type = "Home Page"  ng-click = "gobacktoHomePage()" >Log Out</button>
+    
+     
+   
+      
+      <h2 id='building_direc' style=text-align:center>Building Directory</h2>
+      
+     <!-- <div class="content">  
+         <label>Search:</label> 
+         <input type="text" name="maindirectory_imput" value="" placeholder="Input keywords"> 
+         <input type="submit" name="maindirectory_search" value="Search">
+        </div>-->
+        <div class = "content"  >
+          
+          <span class = "assign">
+          
+          <button id = 'back' ng-click= "order = 'Owner' ">Order by Name</button>
+          <button id = 'back' ng-click= "order = 'ID' ">Order by ID</button>
+          
+          </span>
+          
+          <input type ="text" ng-model = "search" placeholder = "Search for Buildings" >
+          <br><br>
+          
+          <div  style="height:px; overflow:scroll;">
+          
+          
+           <table class = "table" id = "mytable" >
+             
+        <tr>
+            <th>Bulding ID</th>
+            <th>Owner</th>
+            <th>Address</th>
+            <th>Content Control</th>
+            </tr>
+            
+          
+            
+      <!--<ul>
+            <li ng-repeat = "it in buildingData| orderBy: order | filter: search">
+              {{$index}} {{it.ID}}{{it.Address}}
+              <span><button ng-click = onedit(it) >Edit</button></span>
+              <span><button ng-click = deleteitem() >Delete</button></span>
+              </li>
+              </ul> -->
+              
+              
+              
+            <tr ng-repeat = "it in buildingData | orderBy: order | filter: search">
+                <td>{{it.ID}}</td>
+                <td>{{it.Owner}}</td>
+                <td>{{it.Address}}</td>
+                <td><span><button  ng-click = onedit(it)  >Edit</button></span>
+                  <span><button ng-click = deleteitem(it) >Delete</button></span>
+                </td>
+                
+                </tr>
+               
+                </table> </div>
+                
+               
+        </div>  
+      
+      
+      <!--<div class = "building_list">
+      <table class = "table">
+        <tr>
+            <th>Bulding ID</th>
+            <th>Building Name</th>
+            <th>Owner</th>
+            <th>Address</th>
+            <th>Content Control</th>
+            </tr>
+            
+            
+            
+            <tr ng-repeat = "it in buildingData">
+            <td>{{it.ID}}</td>
+            <td>{{it.BuildingType}}</td>
+            <td>{{it.Owner}}</td>
+            <td>{{it.Address}}</td>
+            <td><button type="button">Delete</button>  <button type="button" ng-click = onedit() >Edit</button></td>
+            </tr>
+              
+        
+              
+      </table>
+      
+      </div>-->
+      
+      <br>
+      
+      <div class = "Building Directory">
+        <div class = "logout">
+          </div>
+          <div class = "add">
+            <button id='ok' type="button" ng-click = "pressedAdd()">ADD</button>
+            </div>
+            </div>
+            
+            
+              
+              
+  <!-- <form ng-show = showonAddPress >
+      <table>
+        <tr>
+          <td>Building ID:</td>
+          <td>
+            <input type="text" id = "ID" maxlength = "22" name = "aa" placeholder="Enter ID" ng-model = "newbuilding.ID"  />
+          </td>
+        </tr>
+        <tr>
+          <td>Owner Name:</td>
+          <td>
+            <input type="text" id = "OWNER" maxlength = "22" placeholder="Enter Owner" ng-model = "newbuilding.Owner"   />
+          </td>
+        </tr>
+        <tr>
+          <td>Building Address:</td>
+          <td>
+            <input type="text" id = "ADDRESS" maxlength = "22" placeholder="Enter Address" ng-model = "newbuilding.Address" />
+          </td>
+        </tr>
+        <tr>
+          <td>Building Type:</td>
+          <td>
+             <input type="text" id = "BUILDINGTYPE" maxlength = "22" placeholder="Enter BuildingType" ng-model = "newbuilding.BuildingType" />
+          </td>
+        </tr>
+        <tr>
+          <td>Construction Date:</td>
+          <td>
+            <input type="text" id = "CONSTRUCTIONDATE" maxlength = "22" placeholder="dd/mm/yy" ng-model = "newbuilding.ConstructionDate"  />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="submit" name = "lol" value = "Add" />
+             <button ng-click="addBuilding()" class="Button">Add</button>
+          </td>
+          <td>
+            <button ng-click="Reset_Building_Form()" class="Button">Reset</button>
+          </td>
+          <td>
+            <button type="button" ng-click = "ClickedCancel()">Cancel</button>
+          </td>
+        </tr>
+      </table>
+    </form> -->
+   
+             <form ng-show = showonAddPress ng-submit = "addBulding()">
+               BuildingID:  <input type="text" id = "ID" maxlength = "22" name = "aa" placeholder="Enter ID" ng-model = "newbuilding.ID"  /><br><br>
+               Owner Name: <input type="text" id = "OWNER" maxlength = "22" placeholder="Enter Owner" ng-model = "newbuilding.Owner"   /><br><br>
+               Building Address: <input type="text" id = "ADDRESS" maxlength = "22" placeholder="Enter Address" ng-model = "newbuilding.Address" /><br><br>
+               Building Type: <input type="text" id = "BUILDINGTYPE" maxlength = "22" placeholder="Enter BuildingType" ng-model = "newbuilding.BuildingType" /><br><br>
+               Construction Date: <input type="text" id = "CONSTRUCTIONDATE" maxlength = "22" placeholder="dd/mm/yy" ng-model = "newbuilding.ConstructionDate"  /><br><br>
+             
+              <input id = 'back' type="submit" name = "lol" value = "Add New Building" />
+              <button id = 'back' type="button" ng-click = "ClickedCancel()">Cancel</button>
+              
+              </form>  
+              
+      </div>
+      
+    <div class="Building_List" ng-show = AfterEdit > 
+    
+    <!--<img id="logo" src="https://i.imgur.com/nMqb1Yp.png" alt="logo" /><br><br><br>   -->
+      <div class='Building_List1' style="width: 600px; margin: 0 auto;">
+        
+        <button id = "back" type = "submit"  ng-click = "gobacktoHomePage()" >Log Out</button>
+        
+          <span class = "ass">
+          
+          <button id = "back" ng-click = takeitBackDirectory() >Back</button>
+         
+          
+          </span>
+        
+      <h2 id = building_information style=color:white>Building Information</h2>
+      
+      
+
+      <div class="building_table" style="height:200px; overflow:scroll"> 
+      
+        <table class="table">
+            <tr id='heading'>
+            <th>Project ID</th>
+            <th>Project Name</th>
+            <th>Building ID</th>
+            <th>Status</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Contact Person</th>
+            <th>Project Manager</th>
+            <th>Contractor</th>
+            <th>Content Control</th>
+            <th>Content Control</th>
+            </tr>
+            
+            
+            
+            <tr id = "Mayank" ng-repeat =  "its in projectsBasedonID" >
+            <td>{{its.ProjectID}}</td>
+            <td>{{its.Name}}</td>
+            <td>{{its.BuildingID}}</td>
+            <td>{{its.status}}</td>
+            <td>{{its.StartDate}}</td>
+            <td>{{its.EndDate}}</td>
+             <td>{{its.ContactPerson}}</td>
+             <td>{{its.ProjectManager}}</td>
+             <td>{{its.Contractor}}</td>
+             <td>	<button id = "back" ng-click = EditProject(its) >Edit</button></td>
+             <td>	<button id = "back" ng-click = deleteProject(its) >Delete</button></td>
+            
+         
+            
+            <!--<td>
+                <select name="status" id="pj_status">
+                <option value="1" selected="selected">On-going</option>
+                <option value="2">Completed</option>
+                </select>
+            </td>    
+            <td><a href="#" class="del" id='project_link'>Delete</a> <a href="#" class="edit" id='project_link' ng-click = "clickedEdit()">Edit</a></td> -->
+            </tr>
+            
+             
+           <!-- <tr>
+            <td><input type="checkbox" class="checkbox" /></td>
+            <td>2222</td>
+            <td><a href="#" id='project_link'>Project 2</a></td>
+            <td>1/1/2015</td>
+            <td>11/1/2015</td> 
+            <td>
+                <select name="status" id="pj_status">
+                <option value="1" selected="selected">On-going</option>
+                <option value="2">Completed</option>
+                </select>
+            </td>  
+            <td><a href="#" class="del" id='project_link'>Delete</a> <a href="#" class="edit" id='project_link'>Edit</a></td>
+            </tr>
+            
+            <tr>
+            <td><input type="checkbox" class="checkbox" /></td>
+            <td>3333</td>
+            <td><a href="#" id='project_link'>Project 3</a></td>
+            <td>18/3/2015</td>
+            <td>10/4/2015</td> 
+            <td>
+                <select name="status" id="pj_status">
+                <option value="1" selected="selected">On-going</option>
+                <option value="2">Completed</option>
+                </select>
+            </td>  
+            <td><a href="#" class="del" id='project_link'>Delete</a> <a href="#" class="edit" id='project_link'>Edit</a></td>
+            </tr>
+            -->
+        </table>
+        
+       
+        
+                           
+        
+        </div>
+        
+        
+        
+      </div>
+      
+      <div class="add">
+          <a id='addproject' ng-click = "onthis()" >Add Project</a>  
+      </div>  
+      
+      <div ng-show = "showProject"  >
+        
+          
+        <form ng-submit = "addProject()">
+          
+      <table class="building_list" >
+        
+				<tr>
+					<td id='Text'>Project Name:</td>
+					<td>
+					 <input type="text" placeholder="Enter Name" id="CustomText" name="name_input" ng-model = "Name">
+					</td>
+				</tr>
+				
+				
+				<tr>
+					<td id='Text'>Status:</td>
+					<td>
+						<input type="text" placeholder="Enter Status" id="CustomText" name="o_name_input" ng-model = "statuss">
+					</td>
+				</tr>
+				
+			  <tr>
+					<td id='Text'>Start Date:</td>
+					<td>
+						<input type="text" placeholder="DD/MM/YYYY" id="CustomText" name="o_name_input" ng-model = "Startdate">
+					</td>
+				</tr>
+				
+				<tr>
+					<td id='Text'>End Date:</td>
+					<td>
+						<input type="text" placeholder="DD/MM/YYYY" id="CustomText" name="o_name_input" ng-model = "EndDate">
+					</td>
+				</tr>
+				
+				<tr>
+					<td id='Text'>Contact Person:</td>
+					<td>
+						<input type="text" placeholder="Enter Contact Person" id="CustomText" name="o_name_input" ng-model = "ContactPerson" >
+					</td>
+				</tr>
+				
+				<tr>
+					<td id='Text'>Project Manager:</td>
+					<td>
+						<input type="text" placeholder="Enter Project Manager" id="CustomText" name="o_name_input" ng-model = "Manager" >
+					</td>
+				</tr>
+				
+				<tr>
+					<td id='Text'>Contractor:</td>
+					<td>
+						<input type="text" placeholder="Enter Contractor" id="CustomText" name="o_name_input" ng-model = "Contractor">
+						
+					</td>
+				
+					
+				
+				</tr>
+				
+				
+				
+				 
+        
+      </table> <br>
+						<button ng-click = "closeproject()" >Cancel</button>  
+						<button ng-click="Reset_Building_Form()" class="Button">Reset</button>
+						 <input type="submit" name = "lol" value = "Submit" /> </form>
+						 </div>
+							 
+      
+      
+     
+      
+    </div>
+    
+    
+    
+     <div class="Building_List" ng-show = shouldIshow  > 
+    
+      <div class='Building_List2' style="width: 400px; margin: 0 auto;">
+         <button id = "back" type = "Home Page"  ng-click = "gobacktoHomePage()" >Log Out</button>
+         
+         
+          <span class = "ass">
+          
+          <button id = "back" ng-click = takeitBacktoProject() >Back</button>
+         
+          
+          </span>
+          
+      <h2 id = building_information style=color:white>Project Information</h2>
+      <table class="building_list3">
+        
+        <tr>
+					<td id='Text'>BuildingID:</td>
+					<td>
+					{{currentProject.BuildingID}}
+					</td>
+				</tr>
+				<tr>
+					<td id='Text'>Project Manager:</td>
+					<td>
+					 {{currentProject.ProjectManager}}
+					</td>
+				</tr>
+				
+				<tr>
+					<td id='Text'>ProjectID:</td>
+					<td>
+						{{currentProject.ProjectID}}
+					</td>
+				</tr>
+				
+				<tr>
+					<td id='Text'>Status:</td>
+					<td>
+					 {{currentProject.status}}
+					</td>
+					
+				</tr>
+				
+			  <tr>
+					<td id='Text'>Start Date:</td>
+					<td>
+					{{currentProject.StartDate}}
+					</td>
+				</tr>
+				
+				<tr>
+					<td id='Text'>End Date:</td>
+					<td>
+					{{currentProject.EndDate}}
+					</td>
+				</tr>
+				
+				<tr>
+					<td id='Text'>Contact Person:</td>
+					<td>
+						{{currentProject.ContactPerson}}
+					</td>
+				</tr>
+        
+        <tr>
+					<td id='Text'>Name:</td>
+					<td>
+						{{currentProject.Name}}
+					</td>
+				</tr>
+        
+        <tr>
+					<td id='Text'>Contractor:</td>
+					<td>
+						{{currentProject.Contractor}}
+					</td>
+				</tr>
+        
+      </table> 
+      
+      <br><br>
+      
+      <span id = 'commentsbar'>
+      <input type="text" ng-model = "getss" name = "lol"  />
+      <button id = 'back' ng-click = "addComment()">Add Comment</button>
+      </span>
+            
+      <ul id = "text4comment">
+            <li ng-repeat = "th in commentss">
+              {{$index}} {{th.coo}}  <button ng-click = "deleteComment(th)">Delete</button>
+              
+              </li>
+              </ul>
+              
+     <!-- <div class="building_table"> 
+        <table class="table">
+            <tr id='heading'>
+            <td><input type="checkbox" class="checkbox" /></td>
+            <th>Work ID</th>
+            <th>Work Type</th>
+            <th>Contractor</th>
+            <th>Status</th>
+            <th>Options</th>
+            </tr>
+            
+            <tr>
+            <td><input type="checkbox" class="checkbox" /></td>  
+            <td>1.222</td>
+            <td><a href="#" id='project_link'>Painting</a></td>
+            <td>Jack</td>
+            <td>
+                <select name="status" id="pj_status">
+                <option value="1" selected="selected">On-going</option>
+                <option value="2">Completed</option>
+                </select>
+            </td>    
+            <td><a href="#" class="del" id='project_link'>Delete</a> <a href="#" class="edit" id='project_link' ng-click = "didclicked()">Edit</a></td>
+            </tr>
+             
+            <tr>
+            <td><input type="checkbox" class="checkbox" /></td>
+            <td>1.333</td>
+            <td><a href="#" id='project_link'>Plumbing</a></td>
+            <td>1/1/2015</td>
+            <td>
+                <select name="status" id="pj_status">
+                <option value="1" selected="selected">On-going</option>
+                <option value="2">Completed</option>
+                </select>
+            </td>  
+            <td><a href="#" class="del" id='project_link'>Delete</a> <a href="#" class="edit" id='project_link' ng-click = "didclicked()" >Edit</a></td>
+            </tr>
+            
+        </table> 
+        </div>-->
+        
+        
+        <br>
+        
+     
+      </div> 
+            
+      </div>
+      </div>
+     
+      
+     
+     <div class='Building_List2' style="width: 500px; margin: 0 auto;" ng-show = afterprojectInfo >
+         <button id = "back" type = "Home Page"  ng-click = "gobacktoHomePage()" >Log Out</button>
+         
+         
+          <span class = "ass">
+          
+          <button ng-click = takeLastPageBack() >Back</button>
+         
+          
+          </span>
+          
+      <h2 id = building_information>Work Information</h2>
+      <table class="building_list">
+        
+        <tr>
+					<td id='Text'>Project ID:</td>
+					<td>
+					 <input type="text" placeholder="Enter Project ID" id="CustomText" name="id_input">
+					</td>
+				</tr>
+				<tr>
+					<td id='Text'>Building ID:</td>
+					<td>
+					 <input type="text" placeholder="Enter Building ID" id="CustomText" name="name_input">
+					</td>
+				</tr>
+				
+				<tr>
+					<td id='Text'>Work ID:</td>
+					<td>
+						<input type="text" placeholder="Enter Work ID" id="CustomText" name="bd_date_input">
+					</td>
+				</tr>
+				
+			  <tr>
+					<td id='Text'>Address:</td>
+					<td>
+						<input type="text" placeholder="Enter Address" id="CustomText" name="o_name_input">
+					</td>
+				</tr>
+				
+				<tr>
+					<td id='Text'>Project Manager:</td>
+					<td>
+						<input type="text" placeholder="Enter Project Manager Name" id="CustomText" name="o_name_input">
+					</td>
+				</tr>
+				
+				<tr>
+					<td id='Text'>PM Contact Number:</td>
+					<td>
+						<input type="text" placeholder="Enter PM Contact Number" id="CustomText" name="o_name_input">
+					</td>
+				</tr>
+        
+        <tr>
+					<td id='Text'>Due Date:</td>
+					<td>
+						<input type="text" placeholder="Enter Due Date" id="CustomText" name="o_name_input">
+					</td>
+				</tr>
+        
+        <tr>
+					<td id='Text'>Work Type:</td>
+					<td>
+						<select name="status" id="pj_status">
+                <option value="1" selected="selected">Select</option>
+                <option value="2">Renovation</option>
+                <option value="3">Extension</option>
+                <option value="4">Maintenance</option>
+                <option value="4">Plumbing</option>
+                <option value="4">Electrical</option>
+            </select>
+					</td>
+					
+				</tr>
+        
+        <tr>
+					<td id='Text'>Contractor Name:</td>
+					<td>
+						<input type="text" placeholder="Enter Contractor Name" id="CustomText" name="o_name_input">
+					</td>
+				</tr>
+				
+				<tr>
+					<td id='Text'>Contractor Number:</td>
+					<td>
+						<input type="text" placeholder="Enter Contractor Number" id="CustomText" name="o_name_input">
+					</td>
+				</tr>
+				
+				<tr>
+				  <td id='Text'>Status</td>
+				<td>
+                <select name="status" id="pj_status">
+                <option value="1" selected="selected">On-going</option>
+                <option value="2">Completed</option>
+                </select>
+        </td>  
+        </tr>
+        
+      </table> 
+        
+      
+      <div class="comment">
+      <p id='comments'>Comments:</p> 
+      <textarea class="com_field" rows="10" cols="50"></textarea>
+      <br>
+      <a id='Save' href='#'>Save</a>  
+      </div>  
+      </div>
+     
+     
+
+      
+      
+    
+  </body>
+
+</html>

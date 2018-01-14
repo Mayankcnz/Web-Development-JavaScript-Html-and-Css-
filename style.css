@@ -1,0 +1,581 @@
+/* Put your css in here */
+
+
+body {
+  background-color: #003333;
+  background-image: url(http://img.scoop.co.nz/stories/images/1202/bf32eb9f8c5db0868b50.jpeg);
+}
+
+#back{
+  
+   position: relative;
+  background-color: #009999;
+  border-style: solid;
+  border-color: black;
+  color: white;
+  padding: 5px 15px;
+  text-align: center;
+  display: inline-block;
+  font-size: 12px;
+  transition:	all	linear	0.5s;	
+		opacity:	1;
+  
+}
+
+#back:hover{
+  background-color: #00b3b3;
+  color: black;
+}
+
+.Login_Page{
+    border-left: 6px solid black;
+  border-right: 6px solid black;
+  border-top: 6px solid black;
+  border-bottom: 6px solid black;
+  background-color: #003333;
+  border-radius: 5px;
+  padding: 40px;
+  width: 70%;
+   
+ 
+  background:rgba(40,57,101,.9);
+  background-image: url(http://cdn.wallpapersafari.com/26/24/uR2IGD.jpg);
+}
+
+.container {
+  
+  background-color: blue;
+}
+
+.boxed {
+  line-height: 2em;
+  margin-top: 1px;
+  position: relative;
+  
+}
+
+#userLogin {
+  color: #000000;
+  font-family: "Calibri";
+}
+
+#username {
+  color: white;
+  font-family: "Calibri";
+  font-size: 16px;
+}
+
+p {
+  
+  color: #FFE4E1;
+  font-style:italic; /* for fun , change if u want **/
+}
+
+#password {
+  color: white;
+  font-family: "Calibri";
+  font-size: 16px;
+}
+
+#ok {
+  position: relative;
+  background-color: #009999;
+  border-style: solid;
+  border-color: black;
+  color: white;
+  padding: 5px 15px;
+  text-align: center;
+  display: inline-block;
+  font-size: 12px;
+  transition:	all	linear	0.5s;	
+		opacity:	1;
+}
+
+
+#ok.ng-hide {
+  transition:	all	linear	0.5s;	
+		opacity:	1;
+  
+}
+#ok:hover{
+  background-color: #00b3b3;
+  color: black;
+}
+
+#me{
+  
+  transition:	all	linear	0.5s;	
+		opacity:	1;
+}
+
+#me.ng-hide{
+  
+  transition:	all	linear	0.5s;	
+		opacity:	1;
+}
+
+#cancel {
+  background-color: #009999;
+  border-style: solid;
+  border-color: black;
+  color: white;
+  padding: 5px 15px;
+  text-align: center;
+  display: inline-block;
+  font-size: 12px;
+}
+#cancel:hover{
+  background-color: #00b3b3;
+  color: black;
+}
+
+#logo{
+  position: relative;
+  top: 20px;
+  display: block;
+  margin: auto;
+}
+
+.dropbtn{
+   
+    background-color: #4CAF50;
+    color: black;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+}
+
+/**.dropdown {
+
+    float: right;
+    position: relative;
+    display: inline-block;
+    
+} **/
+
+.dropdown {
+  
+  text-align: center;
+}
+
+
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: inline;  /* Vertical */
+  
+}
+
+.dropdown a:hover {
+  background-color: #00b3b3;
+  
+}
+
+#myDropdown {
+  
+   transition:	all	linear	0.5s;	
+		opacity:	1;
+  
+}
+
+#myDropdown.ng-hide {
+  
+   transition:	all	linear	0.5s;	
+		opacity:	0.1;
+}
+
+#myButton1{
+  color: white;
+  font-family: "Calibri";
+  font-size: 14px;
+  background-color: #009999;
+  position: relative;
+  
+}
+
+#myButton1 {
+  
+   transition:	all	linear	0.5s;	
+		opacity:	1;
+  
+}
+
+#myButton1.ng-hide {
+  
+   transition:	all	linear	0.5s;	
+		opacity:	0.1;
+}
+
+#myButton1:hover{
+  background-color: #00b3b3;
+  color: black;
+}
+
+
+.building_lists {
+ 
+  
+   margin:5px; 
+   text-align: right; 
+   color:black;
+  
+  
+}
+
+#building_direc{
+  color: white;
+  font-family: "Calibri";
+}
+
+.table th {
+  background:#fffdfa;
+  color:#818181; 
+  text-align: left; 
+  padding:7px 10px; 
+  border-bottom:solid 1px #d2d1cb;
+  }
+  
+ /* td:nth-child(2) {
+    padding-right: 20px;
+} */
+
+
+.content {
+  width:650px;
+  padding: 20px;
+  
+}
+
+#build{
+  
+  transition:	all	linear	0.5s;	
+		opacity:	1;
+}
+
+#build.ng-hide{
+  
+  transition:	all	linear	0.5s;	
+		opacity:	0.1;	
+}
+
+
+
+.content ul{
+  padding: 0;
+  list-style-type: none;
+  margin: 30px 0;
+}
+
+.content li{
+  
+  padding: 10px 0;
+  margin: 2px 0 ;
+  border-top: 1px solid #e2e2e2;
+  color: #444;
+
+}
+
+.content ul li:hover, li:active {
+  
+  background-color: #7A991A;
+  color: white;
+}
+
+.content li span{
+  float: right;
+}
+
+.content li h3{
+  display: inline-block;
+  font-weight: normal;
+  font-size: 22px;
+}
+
+.content input{
+  width: 90%;
+  padding: 10px 5%;
+  border-radius: 10px;
+  border: 2px solid #ddd;
+  margin: 10px 0;
+}
+
+.content input[type="submit"]:last-child{
+  width: 150px;
+  display: block;
+  margin: 15px auto;
+}
+
+.assign {
+  
+  padding: 135px;
+  
+}
+
+.ass{
+  float: right;
+}
+
+
+ .table th {
+  background:#fffdfa;
+  color:#818181; 
+  text-align: left; 
+  /*padding:10px 10px;
+  border-bottom:solid 1px #d2d1cb;*/
+  }
+  
+  .table td {
+  text-align: center;
+  background:#fbfcfc;  
+  /*border-bottom:solid 2px #e0e0e0; 
+ /* padding:2px 2px;*/ 
+  } 
+  
+   .table tr:hover td{ background:#7A991A; }
+
+#manager{
+  color: white;
+  font-family: "Calibri";
+  font-size: 13px;
+  background-color: #006666;
+  position: relative;
+  top: -20px;
+}
+#manager:hover{
+  background-color: #00b3b3;
+  color: black;
+}
+
+#owner{
+  color: white;
+  font-family: "Calibri";
+  font-size: 13px;
+  background-color: #006666;
+  position: relative;
+  top: -20px;
+}
+#owner:hover{
+  background-color: #00b3b3;
+  color: black;
+}
+
+/**.dropdown {
+
+    float: right;
+    position: relative;
+    display: inline-block;
+    
+} **/
+
+.dropdown {
+  
+  text-align: center;
+}
+
+
+
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: inline;  /* Vertical */
+  
+}
+
+.dropdown a:hover {
+  background-color: #00b3b3;
+  
+}
+
+.building_list{
+  background-color:white;
+}
+
+.building_list3{
+  position: relative;
+  left: -210px;
+  background-color:white;
+}
+
+
+.Building_List1{
+  position: relative;
+  left: -25px;
+  
+}
+
+.CommentsProject{
+  position: relative;
+  left: -200px;
+    background:#fffdfa;
+  color:#818181; 
+}
+
+#building_information{
+  color:white;
+  font-family: "Calibri";
+  text-decoration: underline;
+  text-align: center;
+  position: static;
+  top: -20px;
+}
+
+#CustomText{
+  color:black;
+  font-family: "Calibri";
+}
+#Text{
+  color:black;
+  font-family: "Calibri";
+}
+.add{
+  color: black;
+  padding: 10px 25px;
+  text-align: center; 
+  text-decoration: none;
+  display: inline-block;
+}
+#addproject{
+  
+  color: black;
+  text-align: center; 
+  text-decoration: underline;
+  display: inline-block;
+  font-family: "Calibri";
+}
+#addproject1{
+    color: #00e6e6;
+  text-align: center; 
+  text-decoration: underline;
+  display: inline-block;
+  font-family: "Calibri";
+  position: relative;
+  top: -275px;
+  left: 350px;
+}
+
+.building_table{
+    border-left: 3px solid black;
+  border-right: 3px solid black;
+  border-top: 3px solid black;
+  border-bottom: 3px solid black;
+  margin:.5%; 
+  border-collapse: collapse;
+  padding-top: .5em;
+  padding-bottom: .5em;
+  padding-left: .5em;
+  padding-right: .5em;
+  font-family: "Calibri";
+    position: relative;
+  left: -100px;
+  width:825px;
+  
+}
+#project_link{
+  color: #00e6e6;
+}
+tr, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+ 
+}
+
+
+#building_information{
+  color:black;
+  font-family: "Calibri";
+  text-decoration: underline;
+  text-align: center;
+  position: static;
+  top: -20px;
+}
+
+#CustomText{
+  color:black;
+  font-family: "Calibri";
+}
+#Text{
+  color:black;
+  font-family: "Calibri";
+}
+.add{
+  color: black;
+  padding: 10px 25px;
+  text-align: center; 
+  text-decoration: none;
+  display: inline-block;
+}
+#addproject{
+  
+  color: #00e6e6;
+  text-align: center; 
+  text-decoration: underline;
+  display: inline-block;
+  font-family: "Calibri";
+}
+
+#project_link{
+  color: #00e6e6;
+}
+
+#requirement{
+  color: black;
+  font-family: "Calibri";
+}
+#comments{
+  color: black;
+  font-family: "Calibri";
+}
+#Save{
+  color: black;
+  text-align: center; 
+  text-decoration: underline;
+  display: inline-block;;
+}
+.commentsTable{
+  background:#fffdfa;
+  color:#818181; 
+  text-align: left; 
+  padding:7px 10px; 
+  border-bottom:solid 1px #d2d1cb;
+  position: relative;
+  left: -30px;
+}
+  .commentsTable td {
+  text-align: center;
+  /*border-bottom:solid 2px #e0e0e0; 
+ /* padding:2px 2px;*/ 
+  } 
+  
+   .commentsTable tr:hover td{ background:#7A991A; }
+
+
+#commentsbar{
+  position: relative;
+  left: -200px;
+}
+#text4comment{
+  color: white;
+  position: relative;
+  left: -200px;
+}
+
+
+
+
+
+
+
+
+  
+
+
+
