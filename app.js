@@ -1,18 +1,12 @@
 var app = angular.module('plunker', ['ngAnimate']);
 
-
-
 app.controller('MainCtrl', function($scope, $http) {
   
   $scope.currentBuildingID = 0;
-  
-  
   var Project_Number = 3;
   
-  $scope.buildingss = [
-    
-    {
-      
+  $scope.buildingss = [ 
+    { 
       ID:"124",
          Owner:"Joe Doe",
          Address:"20 Lambton Quay",
@@ -28,13 +22,8 @@ app.controller('MainCtrl', function($scope, $http) {
      }
     
     ];
-    
-    
-     
    
-    
-    $scope.projectInformation = [];
-   
+  $scope.projectInformation = [];
  
   $scope.loginVisible = true;
   $scope.directoryVisible = false;
@@ -62,9 +51,6 @@ app.controller('MainCtrl', function($scope, $http) {
  
 
   $scope.myData = null;
- // $scope.buildingForm = false;
-  //$scope.projectForm = false;
-  
   $scope.name = 'World';
   
   $scope.target = 'https://happybuildings.sim.vuw.ac.nz/api/chandemaya/user_list.json';
@@ -80,97 +66,54 @@ app.controller('MainCtrl', function($scope, $http) {
               $scope.myData = null;
             }
   );  
-  
-  
 
   var form = document.getElementById("myForm");
    
   $scope.loginValidation = function() { 
+  $scope.validUsernameManager = false;
+  $scope.validPasswordManager = false;
  
-   
-  //var ProjectManagerUsername = "Mayank";
-   
- // var ProjectManagerPassword = "PM";
-  
-  
-   //$scope.username = "";
-   //$scope.password = "";
-   $scope.validUsernameManager = false;
-   $scope.validPasswordManager = false;
-   
-   
-   $scope.validPasswordOwner = false;
-   $scope.validPasswordOwner = false;
+  $scope.validPasswordOwner = false;
+  $scope.validPasswordOwner = false;
    
    
    var getuser = document.getElementById("customx").value;
    var getpass = document.getElementById("givepass").value;
-   
-   
+  
    if($scope.myData === null){
-     
      $scope.feedbaclk = "Sorry, error reading file";
    }
-   
    var gets =  document.getElementById("myButton1").innerText;
-   
    if( gets == "Choose") {
-     
-     $scope.feedback = "Pls Choose";
-     
-     
+     $scope.feedback = "Pls Choose"; 
    }
-   
    
     for(i = 0; $scope.myData !== null && i < $scope.myData.length; i++) {
-     
      if($scope.count === 0){
-       
        document.getElementById('givepass').style.borderColor = "red"; 
-   
-        document.getElementById('customx').style.borderColor = "red"; 
-   
-       
+       document.getElementById('customx').style.borderColor = "red";   
        $scope.feedback = "please select an option first";
-       
-       
-       
+	     
      }else if($scope.count == 1){
-       
-       
-     
+
      if($scope.myData[i].LoginName == getuser && $scope.myData[i].UserType == "manager") {
-       
         $scope.validUsernameManager = true;
      }
-     
-     if($scope.myData[i].Password == getpass &&  $scope.myData[i].UserType == "manager"){
-       
+     if($scope.myData[i].Password == getpass &&  $scope.myData[i].UserType == "manager"){ 
        $scope.validPasswordManager = true;
      }
-     
+   
    }else if($scope.count == 2) {
-     
-      
-     
-     
      if($scope.myData[i].LoginName == getuser && $scope.myData[i].UserType == "owner") {
-       
        $scope.validUsernameOwner = true;
      }
-     
      if($scope.myData[i].Password == getpass &&  $scope.myData[i].UserType == "owner"){
-       
        $scope.validPasswordOwner = true;
      }
-     
-   }
-   } 
+  }
+ } 
    
    if($scope.count == 1){
-     
-     
-     
    if($scope.validUsernameManager && $scope.validPasswordManager){
      
      $scope.feedback = "Login Sucessful as "+getuser;
@@ -179,67 +122,38 @@ app.controller('MainCtrl', function($scope, $http) {
      
    }else {
      
-     if(getuser.length === 0 && getpass.length === 0){
-         
-         $scope.feedback = "Please input username and password";
-         
-         document.getElementById('givepass').style.borderColor = "red"; 
-   
-        document.getElementById('customx').style.borderColor = "red";
-        
-       }else {
-         
-         
-     
-     
-     $scope.feedback = "Login Failed";
-     
-     document.getElementById('customx').style.borderColor = "red";
-     
+     if(getuser.length === 0 && getpass.length === 0){         
+         $scope.feedback = "Please input username and password";         
+        document.getElementById('givepass').style.borderColor = "red"; 
+        document.getElementById('customx').style.borderColor = "red"; 
+       }else { 
+     $scope.feedback = "Login Failed";     
+     document.getElementById('customx').style.borderColor = "red";    
      document.getElementById('givepass').style.borderColor = "red";
-       }
-     
+       }     
    }
-  }else if($scope.count == 2){
-    
-    
-    
+  }else if($scope.count == 2){ 
     if($scope.validUsernameOwner && $scope.validPasswordOwner){
      
      $scope.feedback = "Login Sucessful as "+getuser;
      $scope.loginVisible = false;
-     $scope.directoryVisible = true;
-     
+     $scope.directoryVisible = true;   
    }else {
      
-     
-     if(getuser.length === 0 && getpass.length === 0){
-         
-         $scope.feedback = "Please input username and password";
-         
-         document.getElementById('givepass').style.borderColor = "red"; 
-   
-        document.getElementById('customx').style.borderColor = "red";
-        
+     if(getuser.length === 0 && getpass.length === 0){  
+         $scope.feedback = "Please input username and password"; 
+        document.getElementById('givepass').style.borderColor = "red"; 
+        document.getElementById('customx').style.borderColor = "red"; 
        }else {
-         
-         
-     
-     
      $scope.feedback = "Login Failed";
-     
      document.getElementById('customx').style.borderColor = "red";
-     
      document.getElementById('givepass').style.borderColor = "red";
-     
-  
-   }
-   }
-    
-    
-    
+
+ 	}
   }
-  };
+ 
+ }
+};
   
   $scope.PostTOJSON = function() {
     
@@ -249,68 +163,28 @@ app.controller('MainCtrl', function($scope, $http) {
   var BuildingType = document.getElementById("BUILDINGTYPE").value;
   var ConstructionDate = document.getElementById("CONSTRUCTIONDATE").value;
    
-  
-    
   };
-  
   
   $scope.onthis = function() {
-    
-    $scope.showProject = true;
-    
+  $scope.showProject = true; 
   };
-  
-  
+	
   $scope.currentProject = null;
-  
   $scope.comments = null;
-  
   var testCommentArray = [];
   
   
   $scope.EditProject = function(its) {
     
-     $scope.shouldIshow = true;
+    $scope.shouldIshow = true;
     $scope.AfterEdit = false;
-    
-    
+	  
     var index = $scope.projectsBasedonID.indexOf(its);
-    
     $scope.currentProject = $scope.projectsBasedonID[index];
-    
     $scope.comments = $scope.projectBasedonID[index].Comments;
-    
-     // get the index,, get the details of project of that index// 
-    
-    // store the details in an array, then use it to display in project form page
-    
-   
-    
-   // $scope.lol = its;
-  
-   
-    //var index = $scope.projectsBasedonID.indexOf(its);
-    
-   // var ID = $scope.projectsBasedonID[index].ProjectID;
-    //var Name = $scope.projectsBasedonID[index].Name;
-    //min = min.toString();
-    
-   // $scope.lol = min + " and "+max;
-    
-   
   };
-  
-  //var projectArray = [];
-  
-  //var index = 0;
-  
-  //while(true){
+
     
-    
-    
-    
-    
-  //}
   
   $scope.projectInfo = []; //stores the project into this array
   $scope.tempArray = [];
@@ -341,9 +215,6 @@ app.controller('MainCtrl', function($scope, $http) {
       $scope.runner++;
       
   }
-  
-  
-  
 
 $scope.onedit = function(it) {
   
@@ -359,12 +230,6 @@ $scope.onedit = function(it) {
   //$scope.min = index;
   min = min.toString();
   
- 
-
-   // $scope.viewBuild = $scope.buildingsdata[index];
-    
-  
-    //  $scope.zane = $scope.buildingsdata[index].ID;
 
   for(i = 0; $scope.projectInfo !== null && i < $scope.projectInfo.length; i++) {
     
@@ -384,93 +249,12 @@ $scope.onedit = function(it) {
   ProjectManager: $scope.projectInfo[i].ProjectManager,
   Contractor: $scope.projectInfo[i].Contractor
     
-  
-   });
-    
-    
-    
+    });   
+   }
   }
   
-  }
-  
-  $scope.lul = $scope.projectBasedonID;
-   
-
-// so now projectInfo has all the projects
-  
-  
-  /*var index = $scope.buildingData.indexOf(it);
-   // $scope.id = $scope.buildingData[index].ID;
-   var min = $scope.buildingData[index].ID;
-   $scope.currentBuildingID = index;
-   min = min.toString();
-  
-  
-  $scope.min = $scope.currentBuildingID;
-  
-   $scope.projectInfo = null;
-  
-  
-  while(true){
-  $scope.me = 'https://happybuildings.sim.vuw.ac.nz/api/fudelia/project.' + [$scope.currentBuildingID] + '.json';
-  
-  $http.get($scope.me)
-          .then(
-            function sucessCall(response) { 
-              $scope.projectInfo = response.data.projects;
-             // $scope.feedback = "File read successfully.";
-            },
-            function errorCall() {
-              $scope.feedback = "Error reading file.";
-              $scope.projectInfo = null;
-            }
-  ); 
-  
-  break;
-}
-  
-   
-  
-   
- // $scope.Project_ID =  $scope.buildingData.
-  
- // $scope.Project_ID = idx;
- 
-  var count = 0;
-  
-  $scope.directoryVisible = false;
-  $scope.AfterEdit = true;
-  
-  for(i = 0; $scope.projectInfo !== null && i < $scope.projectInfo.length; i++) {
-      
-      
-      if(min == $scope.projectInfo[i].ProjectID){
-        
-        count++;
-        
-  $scope.projectsBasedonID.push({
-  ProjectID: $scope.projectInfo[i].ProjectID,
-  Name: $scope.projectInfo[i].Name,
-  BuildingID: $scope.projectInfo[i].Building,
-  status: $scope.projectInfo[i].Status,
-  StartDate: $scope.projectInfo[i].StartDate,
-  EndDate: $scope.projectInfo[i].EndDate,
-  ContactPerson: $scope.projectInfo[i].ContactPerson,
-  ProjectManager: $scope.projectInfo[i].ProjectManager,
-  Contractor: $scope.projectInfo[i].Contractor
-  
-   });
-        
-      }
-    } */
- 
+  $scope.lul = $scope.projectBasedonID; 
 };
-
-
-//var m = $scope.tempArray[0];
-//$scope.lul = $scope.projectsBasedonID[0];
-
-
 
 $scope.clickedEdit = function() {
   
@@ -495,8 +279,6 @@ $scope.clickedEdit = function() {
   };
   
   $scope.closeproject = function() {
-    
-    
     $scope.showProject = false;
   };
   
@@ -504,7 +286,6 @@ $scope.clickedEdit = function() {
     
     $scope.directoryVisible = true;
     $scope.AfterEdit = false;
-   // $scope.projectsBasedonID = [];
   };
   
   $scope.takeitBacktoProject = function() {
@@ -515,18 +296,11 @@ $scope.clickedEdit = function() {
   };
   
   $scope.pressedIT = function() {
-    
-    
     if(!$scope.makeitVisible) {
-      
       $scope.makeitVisible = true;
-      
     }else {
-      
       $scope.makeitVisible = false;
     }
-    
-    
   };
   
   $scope.clickedManager = function() {
@@ -598,12 +372,9 @@ $scope.EndDate = "";
 $scope.ContactPerson = "";
 $scope.Manager = "";
 $scope.Contractor = "";
-      
-    
+
   };
 
- 
-  
   $scope.duckerino = function() {
     
     this.feedback = "";
@@ -611,13 +382,9 @@ $scope.Contractor = "";
   document.getElementById('givepass').style.borderColor = "white"; 
    
    document.getElementById('customx').style.borderColor = "white"; 
- 
-   
   };
   
   $scope.pressedAdd = function() {
-    
-    
     $scope.showonAddPress = true;
     
   };
@@ -638,23 +405,9 @@ $scope.Contractor = "";
       
       "coo": $scope.getss
       
-      
-    
-      
     });
     
     $scope.getss = "";
-    
-     //  $scope.loadAllProjects.push({
-   //   "ID":"$scope.buildingData[i].ID",
-    //  "Owner":"$scope.buildingData[i].Owner",
-     //    "Address":"$scope.buildingData[i].Address",
-     //    "BuildingType":"$scope.buildingData[i].BuildingType",
-      //   "ConstructionDate":"$scope.buildingData[i].ConstructionDate"
-    // });
-  // }
-    
-    
   };
   
   $scope.ClickedCancel = function() {
@@ -676,9 +429,7 @@ $scope.Contractor = "";
     $http.delete('/api/Default?' + index);
 
     $scope.projectsBasedonID.splice(index, 1);
-    
-    
-    
+
   };
   
   $scope.deleteComment = function(it) {
@@ -698,10 +449,6 @@ $scope.Contractor = "";
     $scope.buildingData.splice(index, 1);
     
   };
-    
-    
-    
-  
 
  $scope.closeValidation = function() {
    
@@ -709,8 +456,6 @@ form.reset();
 
  };
 
-
-//app.controller('Building_list', function($scope, $http) {
   
   $scope.buildingData = null;
   
@@ -727,55 +472,15 @@ form.reset();
               $scope.buildingData = null;
             }
   );   
-  
-  
-  
- // $scope.loadAllProjects = [];
-  
-  
-   //for(i = 0; $scope.buildingData !== null && i < $scope.buildingData.length; i++) {
-     
-     
-   //  $scope.loadAllProjects.push({
-   //   "ID":"$scope.buildingData[i].ID",
-    //  "Owner":"$scope.buildingData[i].Owner",
-     //    "Address":"$scope.buildingData[i].Address",
-     //    "BuildingType":"$scope.buildingData[i].BuildingType",
-      //   "ConstructionDate":"$scope.buildingData[i].ConstructionDate"
-    // });
-  // }
-  
-  
-  
-  
-  
-  
-  
+
   
    $scope.addBulding = function() {
      
-      
-      
-    
+ 
     var write = 'https://happybuildings.sim.vuw.ac.nz/api/chandemaya/update.building.json';
-    
-   // $scope.buildingss.push({
-     // ID: $scope.newbuilding.ID,
-     // Owner: $scope.newbuilding.Owner,
-     // Address: $scope.newbuilding.Address,
-     // BuildingType: $scope.newbuilding.BuildingType,
-      //ConstructionDate: $scope.newbuilding.ConstructionDate,
-      
-   // });
-   
-   
-  
-   
-   
+
    var sourceObj = {
-     
-     
-     
+ 
      "ID": $scope.newbuilding.ID,
      "Owner": $scope.newbuilding.Owner,
      "Address": $scope.newbuilding.Address,
@@ -822,9 +527,7 @@ form.reset();
      cell2.innerHTML = Owner;
      cell3.innerHTML = Address;
      actionCell.innerHTML = '<button on-click = "delete('+2+')>Edit</button>';
-     
-     
-    
+
   };
   
   $scope.delete = function(index) {
