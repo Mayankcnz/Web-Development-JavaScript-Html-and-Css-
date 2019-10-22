@@ -5,23 +5,6 @@ app.controller('MainCtrl', function($scope, $http) {
   $scope.currentBuildingID = 0;
   var Project_Number = 3;
   
-  $scope.buildingss = [ 
-    { 
-      ID:"124",
-         Owner:"Joe Doe",
-         Address:"20 Lambton Quay",
-         BuildingType:null,
-         ConstructionDate:"0001-01-01T00:00:00"
-    },
-    {
-      ID:"223",
-         Owner:"John Smith",
-         Address:"20 Dixon Street",
-         BuildingType:null,
-         ConstructionDate:"0001-01-01T00:00:00"
-     }
-    
-    ];
    
   $scope.projectInformation = [];
  
